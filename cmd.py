@@ -1,6 +1,6 @@
  from django.contrib.auth.models import User
  from news_portal.models import Author, Category, Post, PostCategory, Comment
- from news_portal import ITEM
+ from news_portal import ITEM, article
 
 #Создать двух пользователей (с помощью метода User.objects.create_user('username')).
  u1 = User.objects.create_user(username='Vasja')
