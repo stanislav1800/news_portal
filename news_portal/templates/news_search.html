@@ -1,0 +1,75 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+
+{% block title %}
+News portal
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="card   my-5 py-4 ">
+    <div class="card-body text-center">
+        <h1 class="font-weight-light"> Найти публикацию </h1>  
+    </div>  
+    <div class="card-footer text-center">
+{# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
+        <form action="" method="get">
+            {{ filterset.form.as_p }}
+            <input class="btn btn-primary btn-sm" type="submit" value="Найти" />
+        </form>
+</div>
+
+</div>
+
+
+<!-- Content Row-->
+<div class="row gx-4 gx-lg-5">
+    {% if posts %}
+        {% for post in posts %}
+    <div class="col-md-4 mb-5">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.heading|censor }} </h5>
+                <h4 class="card-title">{{ post.date|date:'d M Y' }}</h4>
+                <p class="card-text">{{ post.text|truncatewords:20|censor }}</p>
+            </div>
+            <div class="card-footer"><a class="btn btn-primary btn-sm" href={{post.id|post_id}}>Читать дальше</a></div>
+        </div>
+    </div>
+        {% endfor %}       
+    {% else %}
+    <div class="card   my-5 py-4 ">
+        <div class="card-body text-center">
+            <h1 class="font-weight-light">Постов нет!</h1>    
+        </div>  
+    </div> 
+    {% endif %}
+    <div class="card text-white bg-secondary my-5 py-4 text-center"><p>
+    {# Добавляем пагинацию на страницу #}
+
+    {# Информация о предыдущих страницах #}
+    {% if page_obj.has_previous %}
+        <a class=" text-white " href="?page=1">1</a>
+        {% if page_obj.previous_page_number != 1 %}
+            ...
+            <a class=" text-white " href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+        {% endif %}
+    {% endif %}
+ 
+    {# Информация о текущей странице #}
+    {{ page_obj.number }}
+ 
+    {# Информация о следующих страницах #}
+    {% if page_obj.has_next %}
+        <a class=" text-white " href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+        {% if paginator.num_pages != page_obj.next_page_number %}
+            ...
+            <a class=" text-white " href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+        {% endif %}
+    {% endif %}
+</p></div>
+</div>
+{% endblock content %}
