@@ -1,0 +1,32 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+
+<!-- {% block nav %}
+    {% if request.user.is_staff == True %}
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Профиль</a></li>  
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/news/articles/create/">Создать Статью</a></li>  
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/news/create/">Создать Новость</a></li>  
+    {% else %}
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/sign/signup/">Регистрация</a></li>     
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/sign/login/">Авторизация</a></li>   
+    {% endif%} 
+{% endblock nav %} -->
+
+{% block content %}
+<div class="card   my-5 py-4 ">
+    <div class="card-body text-center">
+        <h1 class="font-weight-light">{{ post.heading|censor }}</h1>  
+        <h1>{{ post.date|date:'d M Y' }} </h1>  
+    </div>  
+    <div class="card-footer">
+        <p class="card-text">{{ post.text|censor }}</p>
+    </div>
+    <div class="card-footer"><a class="btn btn-primary btn-sm" href={{post|delete}}>Удалить</a>
+        <a class="btn btn-primary btn-sm" href={{post|update}}>Редактировать</a></div>
+</div> 
+{% endblock content %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Notifications</title>
+</head>
+<body>
+    <h1>Новости для вас в разделе: {{ categ }}</h1>
+    <ul>
+    {% for post in posts %}
+        <li>
+            <h2>{{ post.heading }}</h2>
+            <p>{{ post.preview }}</p>
+            <p>Автор: {{ post.author.user.username }}</p>
+            <a href="{{ link }}{{ post.pk }}">Прочитай больше</a><br>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
