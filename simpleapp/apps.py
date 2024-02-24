@@ -8,10 +8,3 @@ class NewsConfig(AppConfig):
 
     def ready(self):
         import simpleapp.signals
-
-
-# red = redis.Redis(
-#     host='redis-17793.c253.us-central1-1.gce.cloud.redislabs.com',
-#     port=17793,
-#     password='wgX10rxHoy4kB687xoQgMANyIxISsxIL'
-# )
