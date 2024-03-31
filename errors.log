@@ -1,0 +1,52 @@
+2024-03-31 23:07:41,988 ERROR Internal Server Error: /news/search/ C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\utils\log.py (<class 'django.core.exceptions.FieldError'>, FieldError("Unsupported lookup 'iregex' for ForeignKey or join on the field not permitted."), <traceback object at 0x00000202DA245A80>)
+Traceback (most recent call last):
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\news_portal_main2\simpleapp\views.py", line 77, in get_queryset
+    return self.filterset.qs
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django_filters\filterset.py", line 230, in qs
+    qs = self.filter_queryset(qs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django_filters\filterset.py", line 213, in filter_queryset
+    queryset = self.filters[name].filter(queryset, value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django_filters\filters.py", line 159, in filter
+    qs = self.get_method(qs)(**{lookup: value})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\sql\query.py", line 1559, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\sql\query.py", line 1383, in build_lookup
+    lhs = self.try_transform(lhs, lookup_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\db\models\sql\query.py", line 1427, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'iregex' for ForeignKey or join on the field not permitted.
+2024-03-31 23:07:41,992 ERROR "GET /news/search/?date=&author=%D1%84%D1%8B%D0%B210&heading= HTTP/1.1" 500 154966 C:\Users\stanislav\PycharmProjects\news_portal\venv\Lib\site-packages\django\core\servers\basehttp.py None
